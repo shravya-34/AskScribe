@@ -18,7 +18,7 @@ const User = () => {
   const [filename, setFilename] = useState('');
   const [files, setFiles] = useState([]);
   const [fileId, setFileId] = useState(-1);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState('Sample.txt');
 
   useEffect(() => {
     setData(jwt_decode(location.state.data.data));
@@ -125,12 +125,6 @@ const User = () => {
     }
     setContent(texts) 
   }
-
-  // if (file=='' || file=='Sample.pdf'){
-  //   setContent('')
-  // }else{
-  //   setContent(extractText(file))
-  // }
 
   return (
     <>

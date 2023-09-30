@@ -6,7 +6,6 @@ import cors from 'cors';
 import express, { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
-// require('dotenv').config()
 
 const app = express();
 
