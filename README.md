@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Hrishikesh332/AskScribe">
-    <img src="src/Logo.png" alt="Logo" width="80" height="80">
+    <img src="askscribe/public/Logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">AskScribe</h3>
