@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React from 'react';
 import { Card } from 'flowbite-react';
 const About = () => {
   return (

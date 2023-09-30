@@ -1,3 +1,4 @@
+import React from 'react';
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { ChatContainer, MainContainer, Message, MessageInput, MessageList, TypingIndicator } from "@chatscope/chat-ui-kit-react";
 import OpenAI from "openai";
