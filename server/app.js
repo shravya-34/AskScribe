@@ -1,5 +1,3 @@
-// import env from "react-dotenv";
-
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -27,9 +25,6 @@ mongoose
     console.log("Connected to database");
   })
   .catch((e) => console.log(e));
-
-import './userDetails.js';
-import './pdfDetails.js'
 
 const User = mongoose.model("UserInfo");
 const Pdf = mongoose.model("PdfDetails");
