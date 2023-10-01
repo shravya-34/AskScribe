@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode";
 import Header from './Header'
 import Footer from './Footerpage'
 import About from './About'
-import Chatbot from './Chatbot' 
+import Chatbot from './Chatbot'
 import Services from './Services'
 
 const User = () => {
@@ -22,7 +22,7 @@ const User = () => {
 
   useEffect(() => {
     setData(jwt_decode(location.state.data.data));
-  },[location]);
+  }, [location]);
 
   useEffect(() => {
     handleOpen()
@@ -39,7 +39,7 @@ const User = () => {
       setFilename(reader.result);
     }
     reader.onerror = error => {
-      console.log("error : ",error);
+      console.log("error : ", error);
     }
   }
 
@@ -49,35 +49,35 @@ const User = () => {
   }
 
   const handleUpload = (e) => {
-    if(filename!=''){
+    if (filename != '') {
       setFile(filename);
-      fetch("http://localhost:5000/upload-pdf",{
-        method:"POST",
-        crossDomain:true,
+      fetch("/upload-pdf", {
+        method: "POST",
+        crossDomain: true,
         headers: {
-          "Content-Type":"application/json",
-          Accept:"application/json",
-          "Access-Control-Allow-Origin":"*",
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
-        body:JSON.stringify({
-          base64:filename,
-          femail:data.femail,
+        body: JSON.stringify({
+          base64: filename,
+          femail: data.femail,
         })
       })
-      .then((res)=>res.json())
-      .then((data)=>{
-        console.log(data)
-      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+        })
     }
   }
 
-  async function handleOpen(){
-    await fetch(`http://localhost:5000/getpdf/${data.femail}`, {
+  async function handleOpen() {
+    await fetch(`/getpdf/${data.femail}`, {
       method: 'GET',
       headers: {
-        "Content-Type":"application/json",
-        Accept:"application/json",
-        "Access-Control-Allow-Origin":"*",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
       }
     })
       .then(response => response.json())
@@ -87,75 +87,75 @@ const User = () => {
       .catch(err => console.error(err));
   }
 
-  async function handleDelete(){
-    if (fileId==-1){
+  async function handleDelete() {
+    if (fileId == -1) {
       alert("No pdf exists.")
     }
     files.splice(fileId, 1)
-    await fetch(`http://localhost:5000/deletepdf` ,{
+    await fetch(`/deletepdf`, {
       method: 'POST',
       headers: {
-        "Content-Type":"application/json",
-        Accept:"application/json",
-        "Access-Control-Allow-Origin":"*",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
-      body:JSON.stringify({
+      body: JSON.stringify({
         pdf: files,
-        femail:data.femail,
+        femail: data.femail,
       })
     })
-    .then(res => res.json())
-    .then(res => {
-      if (res.status=='FILE DELETED SUCCESSFULLY'){
-        alert('FILE DELETED SUCCESSFULLY')
-      }
-    })
-    .catch(err => console.log(err));
+      .then(res => res.json())
+      .then(res => {
+        if (res.status == 'FILE DELETED SUCCESSFULLY') {
+          alert('FILE DELETED SUCCESSFULLY')
+        }
+      })
+      .catch(err => console.log(err));
   }
 
-  async function extractText(url){
+  async function extractText(url) {
     let texts = [];
-    let pdf = await pdfjsLib.getDocument({url:url}).promise;
+    let pdf = await pdfjsLib.getDocument({ url: url }).promise;
     let pages = pdf.numPages;
-    for(let i=1; i<=pages; i++){
+    for (let i = 1; i <= pages; i++) {
       let page = await pdf.getPage(i)
       let txt = await page.getTextContent()
       let text = txt.items.map((s) => s.str).join()
       texts.push(text)
     }
-    setContent(texts) 
+    setContent(texts)
   }
 
   return (
     <>
-    <Header change='hidden' logout=''/>
-    <div className='flex justify-around'>
-      <div className='h-screen ml-4 w-4/6' >
-        <div className='flex'>
-          <form className='flex'>
-          <input className='m-0 w-60 p-2 mr-2 ' type='file' onChange={handleFile}></input>
-          <Button color='purple' size='sm' gradientDuoTone="purpleToBlue" outline className='mr-2'
-          onClick={handleUpload}>Upload PDF</Button>
-          </form>
-          <Dropdown size='sm' label='YOUR PDFS'>
-          {files?.map((pdf, i) => {
-            return(
-              <Dropdown.Item onClick={() => handleOpenFile(i)} key={i}>{i}</Dropdown.Item>
-            )
-          })}
-          </Dropdown>
-          <Button size = 'sm' className='ml-2' onClick={handleDelete}>DELETE PDF</Button>
+      <Header change='hidden' logout='' />
+      <div className='flex justify-around'>
+        <div className='h-screen ml-4 w-4/6' >
+          <div className='flex'>
+            <form className='flex'>
+              <input className='m-0 w-60 p-2 mr-2 ' type='file' onChange={handleFile}></input>
+              <Button color='purple' size='sm' gradientDuoTone="purpleToBlue" outline className='mr-2'
+                onClick={handleUpload}>Upload PDF</Button>
+            </form>
+            <Dropdown size='sm' label='YOUR PDFS'>
+              {files?.map((pdf, i) => {
+                return (
+                  <Dropdown.Item onClick={() => handleOpenFile(i)} key={i}>{i}</Dropdown.Item>
+                )
+              })}
+            </Dropdown>
+            <Button size='sm' className='ml-2' onClick={handleDelete}>DELETE PDF</Button>
+          </div>
+          <iframe src={`${file}#view=fitH`}
+            type="application/pdf" className='w-full h-4/5 border-solid border-violet-900 border-4 rounded' ></iframe>
         </div>
-          <iframe  src={`${file}#view=fitH`}
-          type="application/pdf" className='w-full h-4/5 border-solid border-violet-900 border-4 rounded' ></iframe>
-      </div>
 
-      <div className='w-2/6' style={{height:"480px"}}>
-        <h1 className='text-center'>ASKSCRIBE BOT</h1>
-        <Chatbot Pdf_Content = {content}/>
-      </div>
+        <div className='w-2/6' style={{ height: "480px" }}>
+          <h1 className='text-center'>ASKSCRIBE BOT</h1>
+          <Chatbot Pdf_Content={content} />
+        </div>
 
-    </div>
+      </div>
       <About />
       <Services />
       <Footer />

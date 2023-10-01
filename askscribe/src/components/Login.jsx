@@ -15,7 +15,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     const [femail, fpassword] = [lemail, lpassword];
-    fetch("http://localhost:5000/login-user",{
+    fetch("/login-user",{
       method:"POST",
       crossDomain:true,
       headers:{
