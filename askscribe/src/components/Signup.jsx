@@ -14,7 +14,7 @@ const Signup = () => {
     e.preventDefault();
     const [fusername, femail, fpassword] = [username, email, password];
 
-    fetch("/register", {
+    fetch(`${import.meta.env.VITE_URL}/register`, {
       method: "POST",
       crossDomain: true,
       headers: {
