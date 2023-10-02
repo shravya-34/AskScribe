@@ -15,7 +15,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     const [femail, fpassword] = [lemail, lpassword];
-    fetch(`/login-user`,{
+    fetch(`${import.meta.env.VITE_URL}/login-user`,{
       method:"POST",
       crossDomain:true,
       headers:{

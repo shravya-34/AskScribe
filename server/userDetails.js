@@ -1,5 +1,3 @@
-// const mongoose = require("mongoose");
-
 import mongoose from "mongoose";
 
 const UserDetailsScehma = new mongoose.Schema(
@@ -15,4 +13,4 @@ const UserDetailsScehma = new mongoose.Schema(
 
 mongoose.model("UserInfo", UserDetailsScehma);
 
-// export default UserDetailsScehma;
+export default UserDetailsScehma;

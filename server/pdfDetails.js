@@ -1,5 +1,3 @@
-// const mongoose = require("mongoose");
-
 import mongoose from "mongoose";
 
 const PdfDetailsSchema = new mongoose.Schema(
@@ -14,4 +12,4 @@ const PdfDetailsSchema = new mongoose.Schema(
 
 mongoose.model("PdfDetails", PdfDetailsSchema);
 
-// export default UserDetailsScehma;
+export default PdfDetailsSchema;

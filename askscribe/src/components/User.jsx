@@ -51,7 +51,7 @@ const User = () => {
   const handleUpload = (e) => {
     if (filename != '') {
       setFile(filename);
-      fetch("/upload-pdf", {
+      fetch(`${import.meta.env.VITE_URL}/upload-pdf`, {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -72,7 +72,7 @@ const User = () => {
   }
 
   async function handleOpen() {
-    await fetch(`/getpdf/${data.femail}`, {
+    await fetch(`${import.meta.env.VITE_URL}/getpdf/${data.femail}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const User = () => {
       alert("No pdf exists.")
     }
     files.splice(fileId, 1)
-    await fetch(`/deletepdf`, {
+    await fetch(`${import.meta.env.VITE_URL}/deletepdf`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

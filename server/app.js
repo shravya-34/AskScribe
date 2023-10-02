@@ -5,8 +5,17 @@ import express, { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
-const app = express();
+import dotenv from 'dotenv'
+import path from 'path'
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '.env') });
 
+import UserInfo from './userDetails.js';
+import PdfDetails from './pdfDetails.js';
+
+const app = express();
 app.use(bodyParser.json({limit : '10mb'}));
 app.use(bodyParser.urlencoded({extended:true, limit:'10mb'}));
 app.use(express.json());
@@ -14,9 +23,9 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-const JWT_SECRET = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
-const mongoUrl = 'mongodb+srv://root:shetty34@cluster0.5ho67t3.mongodb.net/askscribe';
+const JWT_SECRET =process.env.JWT_SECRET;
 
+const mongoUrl = process.env.mongoUrl;
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
