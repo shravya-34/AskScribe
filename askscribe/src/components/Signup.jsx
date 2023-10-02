@@ -13,7 +13,6 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     const [fusername, femail, fpassword] = [username, email, password];
-
     fetch(`${import.meta.env.VITE_URL}/register`, {
       method: "POST",
       crossDomain: true,
@@ -38,7 +37,6 @@ const Signup = () => {
           alert("User Exists Already");
         }
       });
-
   };
 
   return (
