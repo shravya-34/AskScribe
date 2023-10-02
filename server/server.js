@@ -4,13 +4,15 @@ import cors from 'cors';
 import express, { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import path from 'path'
 
 import dotenv from 'dotenv'
-import path from 'path'
 import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '.env') });
+const JWT_SECRET =process.env.JWT_SECRET;
+const mongoUrl = process.env.mongoUrl;
 
 import UserInfo from './userDetails.js';
 import PdfDetails from './pdfDetails.js';
@@ -23,9 +25,6 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-const JWT_SECRET =process.env.JWT_SECRET;
-
-const mongoUrl = process.env.mongoUrl;
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
@@ -34,7 +33,6 @@ mongoose
     console.log("Connected to database");
   })
   .catch((e) => console.log(e));
-
 const User = mongoose.model("UserInfo");
 const Pdf = mongoose.model("PdfDetails");
 

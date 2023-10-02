@@ -3,8 +3,7 @@ import React from 'react';
 
 const Information = () => {
   return (
-    <>
-    <div className='ml-10 mt-12 w-7/12 leading-10'>
+    <div className='mt-12 leading-10 information'>
       <p className='font-mono font-bold text-5xl'>Your AI Research Assistant</p>
       <p className='text-1xl my-5'>AskScribe - Navigate PDF in a new way</p>
       <ul className='text-1xl list-disc ml-4'>
@@ -21,7 +20,7 @@ const Information = () => {
       </div>
       <a href='/login'><Button color='purple' className='m-2 mt-6'>Upload PDF</Button></a>
     </div>
-    </>
+    
   )
 }
 export default Information

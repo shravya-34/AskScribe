@@ -2,7 +2,7 @@ import React from 'react';
 
 const Image = () => {
   return (
-    <div className='w-4/12 mt-14'>
+    <div className='image'>
         <img src="/askscribe.png" className=''></img>
     </div>
   )

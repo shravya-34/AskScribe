@@ -9,12 +9,24 @@
     right: 10px;
 }
 
+//Information 
+.information{
+    padding-left: 5%;
+    flex: 60%;
+}
+
+// Image
+.image{
+    // mt-14 pt-10 w-4/12   tailwind
+    flex: 40%;
+    margin-top: 15vh;
+}
+
 // About
 #about{
     height: fit-content;
     padding: 20px 0px;
 }
-
 .color-card{
     background-color: #0B2447;
 }
@@ -34,6 +46,18 @@
 }
 
 @media only screen and (max-width: 900px) {
+    .introduction{
+        flex-direction: column;
+        align-items: center;
+    }
+    .information{
+        width: 100%;
+    }
+    .image{
+        margin-top: 5vh;
+        width: 70%;
+    }
+
     .about1{
         display: none;
     }

@@ -4,7 +4,7 @@ import Image from './Image'
 
 const Introduction = () => {
   return (
-    <div className='flex content-center'>
+    <div className='flex content-center introduction'>
       <Information />
       <Image />
     </div>
