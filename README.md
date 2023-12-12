@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <a href="https://github.com/Hrishikesh332/AskScribe">
+  <a href="https://github.com/shravya-34/AskScribe">
     <img src="askscribe/public/logo.ico" alt="Logo" width="80" height="80">
   </a>
 
@@ -88,7 +88,7 @@ Working of the AskScribe and the interaction with the LLM Model:
 Clone the project
 
 ```bash
-  git clone https://github.com/Hrishikesh332/AskScribe.git
+  git clone https://github.com/shravya-34/AskScribe.git
 ```
 
 Install dependencies:
@@ -120,7 +120,7 @@ Install dependencies:
 
 ## Feedback
 
-If you have any feedback, please reach out to us at **hriskikesh.yadav332@gmail.com**
+If you have any feedback, please reach out to us at **shettyshravya34@gmail.com**
 
 
 ## Support
