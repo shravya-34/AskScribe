@@ -116,16 +116,9 @@ Install dependencies:
 🔍**Content Exploration:** Assitance for content creators, journalists, or bloggers in exploring and extracting information from PDF sources. They can ask questions to uncover relevant data, statistics, or insights for their content creation process.
 
 
-
-
 ## Feedback
 
 If you have any feedback, please reach out to us at **shettyshravya34@gmail.com**
-
-
-## Support
-
-For support join our Slack channel - [AMA](https://ml-geeksworkspace.slack.com/archives/C03K2M9SBAA)
 
 ## License
 
