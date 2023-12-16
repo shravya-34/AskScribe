@@ -1,6 +1,11 @@
                   // React Js Project
-// Used pnpm
+// USE pnpm
 pnpm install
+pnpm add vite --save-dev
+
+// ADD OPENAI API KEY - 
+Create .env file inside askscribe folder and write - 
+VITE_API_KEY = 'ENTER YOUR OPENAI API KEY HERE'
 
 // Run the project - 
 cd askscribe
