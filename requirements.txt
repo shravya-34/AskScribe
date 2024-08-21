@@ -32,3 +32,12 @@ Body Parser - pnpm install body-parser
 
 // If still error is shown try using -
 pnpm audit fix
+
+
+// Run server
+
+cd server
+
+pnpm install
+pnpm start or node server.js
+
